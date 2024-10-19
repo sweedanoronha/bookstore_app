@@ -13,7 +13,7 @@ models.Base.metadata.create_all(bind=engine)
 
 # Configure CORS
 origins = [
-    "http://localhost:3000",  # React frontend URL
+    "http://localhost:1234",  # React frontend URL
 ]
 
 app.add_middleware(
