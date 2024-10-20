@@ -75,3 +75,8 @@ def delete_book(book_id: int, db: Session = Depends(get_db)):
     db.delete(book)
     db.commit()
     return {"message": "Book deleted"}
+
+# Graceful shutdown
+@app.on_event("shutdown")
+def shutdown_event():
+    print("Shutting down backend gracefully...")

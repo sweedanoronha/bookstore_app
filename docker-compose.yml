@@ -18,8 +18,8 @@ services:
       - backend
 
   db:
-    image: "nouchka/sqlite3"
-    volumes:
-      - ./backend/data:/var/db
+    image: coleifer/sqlite-web  # Official SQLite Web service
     environment:
-      - SQLITE_DB=books.db
+      - SQLITE_DATABASE=./books.db  # Path to the SQLite DB
+    ports:
+      - "8080:8080"  # Expose SQLite Web interface
