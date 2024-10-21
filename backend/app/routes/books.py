@@ -1,6 +1,6 @@
 from fastapi import Depends, HTTPException,APIRouter
 from sqlalchemy.orm import Session
-from .. import models
+from ..models.book import Book
 from ..database import  get_db
 from sqlalchemy.exc import NoResultFound
 
@@ -10,20 +10,20 @@ router = APIRouter(prefix="", tags=["books"])
 # Get all books
 @router.get("/books")
 def get_books(db: Session = Depends(get_db)):
-    return db.query(models.Book).all()
+    return db.query(Book).all()
 
 # Get book by ID
 @router.get("/books/{book_id}")
 def get_book(book_id: int, db: Session = Depends(get_db)):
     try:
-        return db.query(models.Book).filter(models.Book.id == book_id).one()
+        return db.query(Book).filter(Book.id == book_id).one()
     except NoResultFound:
         raise HTTPException(status_code=404, detail="Book not found")
 
 # Create a new book
 @router.post("/books")
 def create_book(title: str, db: Session = Depends(get_db)):
-    new_book = models.Book(title=title)
+    new_book = Book(title=title)
     db.add(new_book)
     db.commit()
     db.refresh(new_book)
@@ -32,7 +32,7 @@ def create_book(title: str, db: Session = Depends(get_db)):
 # Update a book by ID
 @router.put("/books/{book_id}")
 def update_book(book_id: int, title: str, db: Session = Depends(get_db)):
-    book = db.query(models.Book).filter(models.Book.id == book_id).first()
+    book = db.query(Book).filter(Book.id == book_id).first()
     if book is None:
         raise HTTPException(status_code=404, detail="Book not found")
     book.title = title
@@ -43,7 +43,7 @@ def update_book(book_id: int, title: str, db: Session = Depends(get_db)):
 # Delete a book by ID
 @router.delete("/books/{book_id}")
 def delete_book(book_id: int, db: Session = Depends(get_db)):
-    book = db.query(models.Book).filter(models.Book.id == book_id).first()
+    book = db.query(Book).filter(Book.id == book_id).first()
     if book is None:
         raise HTTPException(status_code=404, detail="Book not found")
     db.delete(book)

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from . import models
+from .models import book 
 from .database import engine, get_db
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import books
@@ -7,7 +7,7 @@ from .routes import books
 app = FastAPI()
 
 # Create the database tables
-models.Base.metadata.create_all(bind=engine)
+book.Base.metadata.create_all(bind=engine)
 
 # Configure CORS
 origins = [
@@ -29,8 +29,8 @@ app.include_router(books.router)
 @app.on_event("startup")
 def seed_data():
     db = next(get_db())
-    if db.query(models.Book).count() == 0:
-        books = [models.Book(title="Book 1"), models.Book(title="Book 2"), models.Book(title="Book 3")]
+    if db.query(book.Book).count() == 0:
+        books = [book.Book(title="Book 1"), book.Book(title="Book 2"), book.Book(title="Book 3")]
         db.add_all(books)
         db.commit()
 
