@@ -1,8 +1,6 @@
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy.orm import Session
+from fastapi import FastAPI
 from . import models
 from .database import engine, get_db
-from sqlalchemy.exc import NoResultFound
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import books
 
