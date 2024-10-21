@@ -5,8 +5,10 @@ const App = () => {
     const [books, setBooks] = useState([]);
     const [error, setError] = useState(null);
 
+    //TODO: Update this peice of code to use axios handling post request to connect to backend
     const fetchBooks = async () => {
         try {
+            //TODO: Store the backend host info in config and Improve configuration to support different environments (prod, dev)
             const response = await fetch('http://localhost:8000/books'); // FastAPI backend URL
             if (!response.ok) {
                 throw new Error('Network response was not ok');
