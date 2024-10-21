@@ -104,11 +104,11 @@ Steps:
 		Your React app should now display the list of books fetched from the FastAPI backend.
 
 5. Using Docker 
-		If you prefer to use Docker for both the frontend and backend, ensure you have a properly configured docker-compose.yml file. 
+		If you prefer to use Docker for both the frontend and backend:
 		
 		Then, run:
 		
-		docker-compose up --build
+		docker-compose up
 		This command will build the services and run them in Docker containers.
 
 6. Testing
