@@ -2,6 +2,6 @@
 /backend/venv
 /backend/books.db
 /backend/app/__pycache__/*.pyc
- 
+ /backend/app/routes/__pycache__/*.pyc
 
  *.pyc
