@@ -9,7 +9,7 @@ const BookList = () => {
   // Fetch book data from backend
   const fetchBooks = async () => {
     try {
-      const response = await booksApi.get('/');
+      const response = await booksApi.get();
       setBooks(response.data);
     } catch (err) {
       setError('Failed to fetch books');
