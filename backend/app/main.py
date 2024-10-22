@@ -12,6 +12,7 @@ book.Base.metadata.create_all(bind=engine)
 # Configure CORS
 origins = [
     "http://localhost:1234",  # React frontend URL
+    "http://localhost:3000",  # Dev testing
 ]
 
 app.add_middleware(

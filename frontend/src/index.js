@@ -1,13 +1,17 @@
+// entry point of the React app
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css'; // Import global styles
+import ReactDOM from 'react-dom';
+import './assets/styles/index.css';
+import HomePage from './pages/HomePage';
+import Header from './components/layout/Header';
 
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <HomePage />
+    </div>
+  );
+};
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+ReactDOM.render(<App />, document.getElementById('root'));
