@@ -27,8 +27,7 @@ Steps:
 1. Clone the Repository
     If you haven't already, clone the codebase to your local machine:
 
-   	git clone https://repo-url.git
-
+   	git clone https://github.com/sweedanoronha/bookstore_app.git
    	Change into the project directory:
     cd your-repo-name
 
