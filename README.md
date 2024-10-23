@@ -107,7 +107,7 @@ Steps:
 		
 		Then, run:
 		
-		docker-compose up
+		docker-compose up  or  docker-compose up --build
 		This command will build the services and run them in Docker containers.
 
 6. Testing
